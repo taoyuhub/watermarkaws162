@@ -23,6 +23,8 @@ $query .= 'FROM `' . UARWAWS_SDB_DOMAIN . '` ';
 $query .= 'WHERE watermark = "y" ';
 
 // Execute select query.
+$sdb->set_region(AmazonSDB::REGION_OREGON);
+
 $select_response = $sdb->select($query);
 
 if ($select_response->isOK()) {
