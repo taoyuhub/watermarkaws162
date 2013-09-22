@@ -98,6 +98,7 @@ else {
     $info .= "<dt>{$item->instancesSet->item->keyName}</dt>";
     $info .= "<dd>DNS: {$item->instancesSet->item->dnsName}</dd>";
     $info .= "<dd>Type: {$item->instancesSet->item->instanceType}</dd>";
+	$info .= "<dd>State: {$item->instancesSet->item->instanceState->name}</dd>";
     $info .= '</dl>';
   }
   echo renderMsg('info', array(
