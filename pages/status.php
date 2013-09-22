@@ -95,8 +95,9 @@ else {
   $info = '';
   foreach ($ec2_describe_response->body->reservationSet->item as $item) {
     $info .= '<dl>';
-    $info .= "<dt>{$item->instancesSet->item->keyName}</dt>";
-    $info .= "<dd>DNS: {$item->instancesSet->item->dnsName}</dd>";
+    $info .= "<dt>{$item->instancesSet->item->tagSet->item->value}</dt>";
+    $info .= "<dd>Key: {$item->instancesSet->item->keyName}</dd>";
+	$info .= "<dd>DNS: {$item->instancesSet->item->dnsName}</dd>";
     $info .= "<dd>Type: {$item->instancesSet->item->instanceType}</dd>";
 	$info .= "<dd>State: {$item->instancesSet->item->instanceState->name}</dd>";
     $info .= '</dl>';
