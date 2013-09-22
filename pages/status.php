@@ -81,6 +81,8 @@ catch (Exception $e) {
 }
 
 // Get a list of all instances from EC2.
+$ec2->set_region(AmazonEC2::REGION_OREGON);
+
 $ec2_describe_response = $ec2->describe_instances();
 
 if (!$ec2_describe_response->isOK()) {
