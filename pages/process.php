@@ -25,6 +25,8 @@ catch (Exception $e) {
   return;
 }
 
+$sqs->set_region(AmazonSQS::REGION_OREGON);
+
 $queue_url = getAwsSqsQueueUrl($sqs, UARWAWS_SQS_QUEUE);
 $received_sqs_response = $sqs->receive_message($queue_url, array(
   'MaxNumberOfMessages' => 1,

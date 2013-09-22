@@ -45,6 +45,8 @@ if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name']) {
     }
 
     // Search topics for specific topic to get ARN.
+	$sns->set_region(AmazonSNS::REGION_OREGON);
+	
     $sns_topic_list = $sns->get_topic_list('/' . UARWAWS_SNS_TOPIC . '/i');
     if (count($sns_topic_list)) {
       $topic_arn = array_pop($sns_topic_list);
