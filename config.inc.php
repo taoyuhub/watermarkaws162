@@ -4,7 +4,7 @@
  * Local configuration; requires editing.
  */
 
-define('UARWAWS_S3_BUCKET' , '');
-define('UARWAWS_SDB_DOMAIN' , '');
-define('UARWAWS_SQS_QUEUE' , '');
-define('UARWAWS_SNS_TOPIC' , '');
+define('UARWAWS_S3_BUCKET' , 'tao.test.watermark');
+define('UARWAWS_SDB_DOMAIN' , 'watermarkedimages');
+define('UARWAWS_SQS_QUEUE' , 'images-to-watermark');
+define('UARWAWS_SNS_TOPIC' , 'watermark-bad-upload');
