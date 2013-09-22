@@ -9,5 +9,5 @@ $ec2_describe_response = $ec2->describe_instances();
 
 foreach($ec2_describe_response->body->reservationSet->item as $item) {
 	echo '<br><br>'.'-------------'.'<br><br>';
-	var_dump($item);
+	var_dump($item->instancesSet->item);
 }
