@@ -36,6 +36,11 @@ if ($select_response->isOK()) {
       // CFSimpleXML and SimpleDB makes it a little difficult to just access
       // attributes by key / value, so I'm just arbitrarily adding them all
       // to an array.
+	  
+	  echo '<br><br>';
+	  var_dump($item);
+  	  echo '<br><br>';
+	  
       $item_attributes = array();
       foreach ($item->Attribute as $attribute) {
         $attribute_stdClass = $attribute->to_stdClass();
