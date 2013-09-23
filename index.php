@@ -55,7 +55,7 @@ if (isset($_REQUEST['q']) && array_key_exists($_REQUEST['q'], $menu_items)) {
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    </head>
+    </head><a href="pages/show.php">show.php</a>
     <body>
 
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
@@ -68,7 +68,7 @@ if (isset($_REQUEST['q']) && array_key_exists($_REQUEST['q'], $menu_items)) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="?q=<?php echo $menu_item_default; ?>">Up and Running with Amazon Web Services</a>
+                    <a class="brand" href="?q=<?php echo $menu_item_default; ?>">Image Watermark Studio with Amazon Web Services</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                           <?php
