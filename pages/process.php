@@ -105,9 +105,6 @@ $content_type = finfo_file($finfo, $temporary_file_name);
 finfo_close($finfo);
 
 // Attempt to watermark image.
-echo '<br><br>temporary_file_name: '.$temporary_file_name.'<br><br>';
-echo '<br><br>image_filename: '.$image_filename.'<br><br>';
-
 try {
   $image_to_be_watermarked = new Imagick($temporary_file_name);
 }
