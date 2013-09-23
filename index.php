@@ -55,7 +55,7 @@ if (isset($_REQUEST['q']) && array_key_exists($_REQUEST['q'], $menu_items)) {
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    </head><a href="pages/show.php">show.php</a>
+    </head>
     <body>
 
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
