@@ -167,8 +167,7 @@ catch (Exception $e) {
 
 // Update SimpleDB item to reflect that image has been watermarked.
 $keypairs = array(
-//  'watermark' => 'y',    this is the original version, Tao updated it.
-  'watermark' => 'n,y',
+  'watermark' => 'y',
 );
 
 $sdb->set_region(AmazonSDB::REGION_OREGON);
