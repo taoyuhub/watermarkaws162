@@ -36,10 +36,12 @@ if ($select_response->isOK()) {
       // CFSimpleXML and SimpleDB makes it a little difficult to just access
       // attributes by key / value, so I'm just arbitrarily adding them all
       // to an array.
-	  
+
+/*	  
 	  echo '<br><br>';
 	  var_dump($item);
   	  echo '<br><br>';
+*/	  
 	  
       $item_attributes = array();
       foreach ($item->Attribute as $attribute) {
@@ -48,7 +50,8 @@ if ($select_response->isOK()) {
       }
       // Render image with height and width.
       echo '<div class="span4">';
-      echo '<img alt="' . $item->Name . '" class="img-polaroid" src="https://s3.amazonaws.com/' . UARWAWS_S3_BUCKET . '/' . $item->Name . '" height="' . $item_attributes['height'] . '" width=' . $item_attributes['width'] . '"/>';
+      //echo '<img alt="' . $item->Name . '" class="img-polaroid" src="https://s3.amazonaws.com/' . UARWAWS_S3_BUCKET . '/' . $item->Name . '" height="' . $item_attributes['height'] . '" width=' . $item_attributes['width'] . '"/>';
+	  echo '<img alt="' . $item->Name . '" class="img-polaroid" src="https://s3-us-west-2.amazonaws.com/' . UARWAWS_S3_BUCKET . '/' . $item->Name . '" height="' . $item_attributes['height'] . '" width=' . $item_attributes['width'] . '"/>';
       echo '</div>';
     }
     echo '</div>';
