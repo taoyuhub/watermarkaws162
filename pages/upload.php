@@ -85,6 +85,8 @@ if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name']) {
   $filename .= '.' . strtolower($imagick->getImageFormat());
 
   // Upload file to S3.
+  $s3->set_region(AmazonS3::REGION_OREGON);
+  
   $s3_upload_response = $s3->create_object(UARWAWS_S3_BUCKET, $filename, array(
     'fileUpload' => $_FILES['image']['tmp_name'],
     'contentType' => $_FILES['image']['type'],
@@ -126,6 +128,8 @@ if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name']) {
   );
 
   // Save item, keyed by the filename, in SimpleDB.
+  $sdb->set_region(AmazonSDB::REGION_OREGON);
+  
   $sdb_put_response = $sdb->put_attributes(UARWAWS_SDB_DOMAIN, $filename, $keypairs);
   if ($sdb_put_response->isOK()) {
     echo renderMsg('success', array(
@@ -153,6 +157,8 @@ if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name']) {
   }
 
   // Send a message to the queue
+  $sqs->set_region(AmazonSQS::REGION_OREGON);
+  
   $queue_url = getAwsSqsQueueUrl($sqs, UARWAWS_SQS_QUEUE);
   $sqs_send_response = $sqs->send_message($queue_url, $filename);
   if ($sqs_send_response->isOK()) {

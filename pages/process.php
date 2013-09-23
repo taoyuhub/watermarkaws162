@@ -78,6 +78,9 @@ $temporary_file_name = tempnam(sys_get_temp_dir(), array_pop($file_name_array));
 
 // Download image from S3 for watermarking.
 $file_resource = fopen($temporary_file_name, 'w+');
+
+$s3->set_region(AmazonS3::REGION_OREGON);
+
 $s3_get_response = $s3->get_object(UARWAWS_S3_BUCKET, $image_filename, array(
   'fileDownload' => $temporary_file_name,
 ));
@@ -166,6 +169,9 @@ catch (Exception $e) {
 $keypairs = array(
   'watermark' => 'y',
 );
+
+$sdb->set_region(AmazonSDB::REGION_OREGON);
+
 $sdb_put_response = $sdb->put_attributes(UARWAWS_SDB_DOMAIN, $image_filename, $keypairs);
 if ($sdb_put_response->isOK()) {
   echo renderMsg('success', array(
@@ -193,6 +199,8 @@ catch (Exception $e) {
 }
 
 // Processed file count metric.
+$cw->set_region(AmazonCloudWatch::REGION_OREGON);
+
 $cw_put_metric_response = $cw->put_metric_data('Watermark', array(
   array(
     'MetricName' => 'ProcessedFiles',
