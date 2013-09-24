@@ -5,55 +5,55 @@
  */
 
 // Check local config.inc.php for completeness.
-if (!UARWAWS_S3_BUCKET) {
+if (!AWS_S3_BUCKET) {
   echo renderMsg('error', array(
     'heading' => 'S3 Bucket name missing!',
-    'body' => 'Edit config.inc.php in siteroot and specify the name of the bucket in UARWAWS_S3_BUCKET.',
+    'body' => 'Edit config.inc.php in siteroot and specify the name of the bucket in AWS_S3_BUCKET.',
   ));
 }
 else {
   echo renderMsg('success', array(
     'heading' => 'S3 Bucket name found:',
-    'body' => UARWAWS_S3_BUCKET,
+    'body' => AWS_S3_BUCKET,
   ));
 }
 
-if (!UARWAWS_SQS_QUEUE) {
+if (!AWS_SQS_QUEUE) {
   echo renderMsg('error', array(
     'heading' => 'SQS Queue missing!',
-    'body' => 'Edit config.inc.php in siteroot and specify the name of the queue in UARWAWS_SQS_QUEUE.',
+    'body' => 'Edit config.inc.php in siteroot and specify the name of the queue in AWS_SQS_QUEUE.',
   ));
 }
 else {
   echo renderMsg('success', array(
     'heading' => 'SQS Queue name found:',
-    'body' => UARWAWS_SQS_QUEUE,
+    'body' => AWS_SQS_QUEUE,
   ));
 }
 
-if (!UARWAWS_SDB_DOMAIN) {
+if (!AWS_SDB_DOMAIN) {
   echo renderMsg('error', array(
     'heading' => 'SimpleDB domain missing!',
-    'body' => 'Edit config.inc.php in siteroot and specify the name of the domain in UARWAWS_SDB_DOMAIN.',
+    'body' => 'Edit config.inc.php in siteroot and specify the name of the domain in AWS_SDB_DOMAIN.',
   ));
 }
 else {
   echo renderMsg('success', array(
     'heading' => 'SimpleDB domain name found:',
-    'body' => UARWAWS_SDB_DOMAIN,
+    'body' => AWS_SDB_DOMAIN,
   ));
 }
 
-if (!UARWAWS_SNS_TOPIC) {
+if (!AWS_SNS_TOPIC) {
   echo renderMsg('error', array(
     'heading' => 'Simple Notification Service topic name missing!',
-    'body' => 'Edit config.inc.php in siteroot and specify the name of the topic in UARWAWS_SNS_TOPIC.',
+    'body' => 'Edit config.inc.php in siteroot and specify the name of the topic in AWS_SNS_TOPIC.',
   ));
 }
 else {
   echo renderMsg('success', array(
     'heading' => 'Simple Notification Service topic name found:',
-    'body' => UARWAWS_SNS_TOPIC,
+    'body' => AWS_SNS_TOPIC,
   ));
 }
 

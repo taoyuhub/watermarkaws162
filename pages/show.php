@@ -19,7 +19,7 @@ catch (Exception $e) {
 // Build select query.
 $query  = 'SELECT * ';
 // SimpleDB requires `, not " when specifying the domain.
-$query .= 'FROM `' . UARWAWS_SDB_DOMAIN . '` ';
+$query .= 'FROM `' . AWS_SDB_DOMAIN . '` ';
 $query .= 'WHERE watermark = "y" ';
 
 // Execute select query.
@@ -51,7 +51,7 @@ if ($select_response->isOK()) {
 			} else {
 			  echo '<div class="item">';
 			}
-			echo '<img alt="' . $item->Name . '" src="https://s3-us-west-2.amazonaws.com/' . UARWAWS_S3_BUCKET . '/' . $item->Name . '" height="' . $item_attributes['height'] . '" width=' . $item_attributes['width'] . '"/>';
+			echo '<img alt="' . $item->Name . '" src="https://s3-us-west-2.amazonaws.com/' . AWS_S3_BUCKET . '/' . $item->Name . '" height="' . $item_attributes['height'] . '" width=' . $item_attributes['width'] . '"/>';
 			echo '</div>';
 			
 			$count++;

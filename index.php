@@ -23,7 +23,7 @@ $menu_items = array(
     'desc' => 'Upload files to be watermarked',
   ),
   'process' => array(
-    'label' => 'Process',
+    'label' => 'Watermark',
     'desc' => 'Add watermarks to images',
   ),
 );

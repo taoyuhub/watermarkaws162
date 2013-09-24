@@ -27,7 +27,7 @@ catch (Exception $e) {
 
 $sqs->set_region(AmazonSQS::REGION_OREGON);
 
-$queue_url = getAwsSqsQueueUrl($sqs, UARWAWS_SQS_QUEUE);
+$queue_url = getAwsSqsQueueUrl($sqs, AWS_SQS_QUEUE);
 $received_sqs_response = $sqs->receive_message($queue_url, array(
   'MaxNumberOfMessages' => 1,
 ));
@@ -81,7 +81,7 @@ $file_resource = fopen($temporary_file_name, 'w+');
 
 $s3->set_region(AmazonS3::REGION_OREGON);
 
-$s3_get_response = $s3->get_object(UARWAWS_S3_BUCKET, $image_filename, array(
+$s3_get_response = $s3->get_object(AWS_S3_BUCKET, $image_filename, array(
   'fileDownload' => $temporary_file_name,
 ));
 fclose($file_resource);
@@ -119,7 +119,7 @@ addWatermark($image_to_be_watermarked);
 $image_to_be_watermarked->writeImages($temporary_file_name, TRUE);
 
 // Upload watermarked image to S3.
-$s3_create_response = $s3->create_object(UARWAWS_S3_BUCKET, $image_filename, array(
+$s3_create_response = $s3->create_object(AWS_S3_BUCKET, $image_filename, array(
   'fileUpload' => $temporary_file_name,
   'contentType' => $content_type,
   'acl' => AmazonS3::ACL_PUBLIC,
@@ -172,7 +172,7 @@ $keypairs = array(
 
 $sdb->set_region(AmazonSDB::REGION_OREGON);
 
-$sdb_put_response = $sdb->put_attributes(UARWAWS_SDB_DOMAIN, $image_filename, $keypairs);
+$sdb_put_response = $sdb->put_attributes(AWS_SDB_DOMAIN, $image_filename, $keypairs);
 if ($sdb_put_response->isOK()) {
   echo renderMsg('success', array(
     'body' => 'Item updated in Amazon SimpleDB.',

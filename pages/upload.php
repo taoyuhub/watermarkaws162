@@ -47,7 +47,7 @@ if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name']) {
     // Search topics for specific topic to get ARN.
 	$sns->set_region(AmazonSNS::REGION_OREGON);
 	
-    $sns_topic_list = $sns->get_topic_list('/' . UARWAWS_SNS_TOPIC . '/i');
+    $sns_topic_list = $sns->get_topic_list('/' . AWS_SNS_TOPIC . '/i');
     if (count($sns_topic_list)) {
       $topic_arn = array_pop($sns_topic_list);
       $sns_publish_response = $sns->publish($topic_arn, 'Upload failed attempt from ' . $_SERVER['REMOTE_ADDR'] . ' - ' . $_FILES['image']['type']);
@@ -87,7 +87,7 @@ if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name']) {
   // Upload file to S3.
   $s3->set_region(AmazonS3::REGION_OREGON);
   
-  $s3_upload_response = $s3->create_object(UARWAWS_S3_BUCKET, $filename, array(
+  $s3_upload_response = $s3->create_object(AWS_S3_BUCKET, $filename, array(
     'fileUpload' => $_FILES['image']['tmp_name'],
     'contentType' => $_FILES['image']['type'],
     'acl' => AmazonS3::ACL_PUBLIC,
@@ -130,7 +130,7 @@ if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name']) {
   // Save item, keyed by the filename, in SimpleDB.
   $sdb->set_region(AmazonSDB::REGION_OREGON);
   
-  $sdb_put_response = $sdb->put_attributes(UARWAWS_SDB_DOMAIN, $filename, $keypairs);
+  $sdb_put_response = $sdb->put_attributes(AWS_SDB_DOMAIN, $filename, $keypairs);
   if ($sdb_put_response->isOK()) {
     echo renderMsg('success', array(
       'body' => 'Item added to Amazon SimpleDB.',
@@ -159,7 +159,7 @@ if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name']) {
   // Send a message to the queue
   $sqs->set_region(AmazonSQS::REGION_OREGON);
   
-  $queue_url = getAwsSqsQueueUrl($sqs, UARWAWS_SQS_QUEUE);
+  $queue_url = getAwsSqsQueueUrl($sqs, AWS_SQS_QUEUE);
   $sqs_send_response = $sqs->send_message($queue_url, $filename);
   if ($sqs_send_response->isOK()) {
     echo renderMsg('success', array(
