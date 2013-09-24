@@ -18,17 +18,19 @@ $sdb->set_region(AmazonSDB::REGION_OREGON);
 $select_response = $sdb->select($query);
 
 if ($select_response->isOK()) {
-	
-	if (count($select_response->body->SelectResult->Item)) {
+	$total = count($select_response->body->SelectResult->Item);
+	if ($total) {
     // Display in a fluid row.
-       echo '<br><br>total records = '.count($select_response->body->SelectResult->Item).'<br><br>';
+       echo '<br><br>total records = '.$total.'<br><br>';
+	   var_dump($select_response->body->SelectResult->Item[0]);
+/*	   
 	   $count=0;
 	   foreach ($select_response->body->SelectResult->Item as $item){
 		   echo '<br><br>count = '.$count.'<br><br>';
 		   var_dump($item);
 		   $count++;
 	   }
-
+*/
 
   }
   // No items.
