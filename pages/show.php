@@ -29,26 +29,40 @@ $select_response = $sdb->select($query);
 
 if ($select_response->isOK()) {
   // If there are more than one item...
-  if (count($select_response->body->SelectResult->Item)) {
+  $total = count($select_response->body->SelectResult->Item);
+	$count=0;
+	if ($total) {
     // Display in a fluid row.
-    echo '<div class="row-fluid">';
-    foreach ($select_response->body->SelectResult->Item as $item) {
-      // CFSimpleXML and SimpleDB makes it a little difficult to just access
-      // attributes by key / value, so I'm just arbitrarily adding them all
-      // to an array.
-	  
-      $item_attributes = array();
-      foreach ($item->Attribute as $attribute) {
-        $attribute_stdClass = $attribute->to_stdClass();
-        $item_attributes[$attribute_stdClass->Name] = $attribute_stdClass->Value;
-      }
-      // Render image with height and width.
-      echo '<div class="span4">';
-      //echo '<img alt="' . $item->Name . '" class="img-polaroid" src="https://s3.amazonaws.com/' . UARWAWS_S3_BUCKET . '/' . $item->Name . '" height="' . $item_attributes['height'] . '" width=' . $item_attributes['width'] . '"/>';
-	  echo '<img alt="' . $item->Name . '" class="img-polaroid" src="https://s3-us-west-2.amazonaws.com/' . UARWAWS_S3_BUCKET . '/' . $item->Name . '" height="' . $item_attributes['height'] . '" width=' . $item_attributes['width'] . '"/>';
-      echo '</div>';
-    }
-    echo '</div>';
+		echo '<div class="carousel slide" id="watermarkedImgs"> ';
+		  echo '<div class=”carousel-inner”> ';
+		  foreach ($select_response->body->SelectResult->Item as $item) {
+			// CFSimpleXML and SimpleDB makes it a little difficult to just access
+			// attributes by key / value, so I'm just arbitrarily adding them all
+			// to an array.
+			
+			$item_attributes = array();
+			foreach ($item->Attribute as $attribute) {
+			  $attribute_stdClass = $attribute->to_stdClass();
+			  $item_attributes[$attribute_stdClass->Name] = $attribute_stdClass->Value;
+			}
+			// Render image with height and width.
+			if ($count == $total-1) {
+			  echo '<div class="item active">';
+			} else {
+			  echo '<div class="item">';
+			}
+			echo '<img alt="' . $item->Name . '" src="https://s3-us-west-2.amazonaws.com/' . UARWAWS_S3_BUCKET . '/' . $item->Name . '" height="' . $item_attributes['height'] . '" width=' . $item_attributes['width'] . '"/>';
+			echo '</div>';
+			
+			$count++;
+		  }   //for each image record
+		  echo '</div>';
+		  
+		  echo '<a href="#watermarkedImgs" class="left carousel-control" data-slide="prev">&lsaquo;</a>';
+		  echo '<a href="#watermarkedImgs" class="right carousel-control" data-slide="next">&rsaquo;</a>';
+		echo '</div>';
+
+
   }
   // No items.
   else {
