@@ -22,7 +22,7 @@ if ($select_response->isOK()) {
 	if ($total) {
     // Display in a fluid row.
        echo '<br><br>total records = '.$total.'<br><br>';
-	   var_dump($select_response->body->SelectResult->Item[0]);
+	   var_dump($select_response->body->SelectResult->Item[$total-1]);
 /*	   
 	   $count=0;
 	   foreach ($select_response->body->SelectResult->Item as $item){
