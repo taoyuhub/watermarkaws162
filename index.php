@@ -12,11 +12,11 @@ $menu_item_default = 'status';
 $menu_items = array(
   'status' => array(
     'label' => 'Status',
-    'desc' => 'Overview of configuration and status',
+    'desc' => 'Overview of app status and AWS configuration',
   ),
   'show' => array(
-    'label' => 'Show',
-    'desc' => 'Show all watermarked images',
+    'label' => 'Display',
+    'desc' => 'Display all watermarked images in carousel',
   ),
   'upload' => array(
     'label' => 'Upload',
@@ -101,7 +101,7 @@ if (isset($_REQUEST['q']) && array_key_exists($_REQUEST['q'], $menu_items)) {
             <hr>
 
             <footer>
-                <p>&copy; Designed by Tao Yu 2013</p>
+                <p>&copy; Image Watermark Studio by Tao Yu 2013</p>
             </footer>
 
         </div> <!-- /container -->
