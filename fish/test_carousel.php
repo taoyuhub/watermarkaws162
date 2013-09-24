@@ -21,8 +21,13 @@ if ($select_response->isOK()) {
 	
 	if (count($select_response->body->SelectResult->Item)) {
     // Display in a fluid row.
-       echo '<br><br>count = '.count($select_response->body->SelectResult->Item).'<br><br>';
-	   var_dump($select_response->body->SelectResult->Item);
+       echo '<br><br>total records = '.count($select_response->body->SelectResult->Item).'<br><br>';
+	   $count=0;
+	   foreach ($select_response->body->SelectResult->Item as $item){
+		   echo '<br><br>count = '.$count.'<br><br>';
+		   var_dump($item);
+		   $count++;
+	   }
 
 
   }
