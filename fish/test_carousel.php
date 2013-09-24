@@ -56,6 +56,11 @@ var_dump($item);
 echo '<br><br>';			
 			$item_attributes = array();
 			foreach ($item->Attribute as $attribute) {
+				
+				echo '<br><br> Attribute:  ';
+var_dump($attribute);
+echo '<br><br>';
+				
 			  $attribute_stdClass = $attribute->to_stdClass();
 			  $item_attributes[$attribute_stdClass->Name] = $attribute_stdClass->Value;
 			}
