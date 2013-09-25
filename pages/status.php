@@ -5,9 +5,9 @@
  */
 
 echo '<div class="row-fluid">';
-echo    '<div class="span2">';
+echo    '<div class="span1">';
 echo    '</div>';
-echo    '<div class="span8">';
+echo    '<div class="span10">';
 echo    '<table class="table table-bordered table-hover responsive-utilities">';
 echo        '<thead>';
 echo            '<tr>';
@@ -110,7 +110,7 @@ if (!AWS_SNS_TOPIC) {
   echo '<tr class="error">';
   echo    '<td>4</td>';
   echo    '<td>Amazon SNS</td>';
-  echo    '<td>Simple Notification Service topic name missing! Edit config.inc.php in siteroot and specify the name of the bucket in AWS_SNS_TOPIC.</td>';
+  echo    '<td>Simple Notification Service Topic name missing! Edit config.inc.php in siteroot and specify the name of the bucket in AWS_SNS_TOPIC.</td>';
   echo '</tr>';
 }
 else {
@@ -154,7 +154,7 @@ else {
 echo       '</tbody>';
 echo     '</table>';
 echo   '</div>';
-echo   '<div class="span2">';
+echo   '<div class="span1">';
 echo   '</div>';
 echo '</div>';
 
