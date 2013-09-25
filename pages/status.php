@@ -204,12 +204,12 @@ else {
   echo   '<div class="span10">';
   echo      '<h3>Amazon EC2 Instances</h3>';
   echo   '</div>';
-  echo   '<div class="span2"></div>';
+  echo   '<div class="span1"></div>';
   echo '</div>';
 
   echo '<div class="row-fluid">';
-  echo   '<div class="span2"></div>';
-  echo   '<div class="span8">';
+  echo   '<div class="span1"></div>';
+  echo   '<div class="span10">';
   echo      '<table class="table table-bordered table-hover responsive-utilities">';
   echo          '<thead>';
   echo            '<tr>';
@@ -225,10 +225,10 @@ else {
 	  } else {
 	  	 echo '<tr class="info">';
 	  }
-      echo    '<td>$count</td>';
+      echo    '<td>'.$count.'</td>';
       echo    '<td><strong>'.$item->instancesSet->item->tagSet->item->value.'</strong></td>';  //instance name
       echo    '<td>'.$item->instancesSet->item->instanceType.'</td>';			//instance type
-	  if ($item->instancesSet->item->instanceState->nam == "Running") {			//instance state
+	  if ($item->instancesSet->item->instanceState->nam == "running") {			//instance state
          echo    '<td><img align="left" src="../img/status_green.gif" alt="stopped icon">'.$item->instancesSet->item->instanceState->name.'</td>';
 	  } else {   //state is "Stopped"
 		 echo    '<td><img align="left" src="../img/status_red.gif" alt="stopped icon">'.$item->instancesSet->item->instanceState->name.'</td>';
