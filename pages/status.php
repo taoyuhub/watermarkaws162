@@ -228,7 +228,7 @@ else {
       echo    '<td>'.$count.'</td>';
       echo    '<td><strong>'.$item->instancesSet->item->tagSet->item->value.'</strong></td>';  //instance name
       echo    '<td>'.$item->instancesSet->item->instanceType.'</td>';			//instance type
-	  if ($item->instancesSet->item->instanceState->nam == "running") {			//instance state
+	  if ($item->instancesSet->item->instanceState->name == "running") {			//instance state
          echo    '<td><img align="left" src="../img/status_green.gif" alt="stopped icon">'.$item->instancesSet->item->instanceState->name.'</td>';
 	  } else {   //state is "Stopped"
 		 echo    '<td><img align="left" src="../img/status_red.gif" alt="stopped icon">'.$item->instancesSet->item->instanceState->name.'</td>';
