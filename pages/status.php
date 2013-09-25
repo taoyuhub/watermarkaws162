@@ -5,8 +5,15 @@
  */
 
 echo '<div class="row-fluid">';
-echo    '<div class="span1">';
-echo    '</div>';
+echo   '<div class="span1"></div>';
+echo   '<div class="span10">';
+echo      '<h3>Amazon Services Information</h3>';
+echo   '</div>';
+echo   '<div class="span1"></div>';
+echo '</div>';
+
+echo '<div class="row-fluid">';
+echo    '<div class="span1"></div>';
 echo    '<div class="span10">';
 echo    '<table class="table table-bordered table-hover responsive-utilities">';
 echo        '<thead>';
@@ -220,7 +227,7 @@ else {
 	
   $count=1;			
   foreach ($ec2_describe_response->body->reservationSet->item as $item) {
-	  if ($item->instancesSet->item->instanceState->nam == "Running") {
+	  if ($item->instancesSet->item->instanceState->name == "running") {
 	     echo '<tr class="success">';
 	  } else {
 	  	 echo '<tr class="info">';
