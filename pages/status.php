@@ -182,6 +182,7 @@ if (!$ec2_describe_response->isOK()) {
   ));
 }
 else {
+/*	
   $info = '';
   foreach ($ec2_describe_response->body->reservationSet->item as $item) {
     $info .= '<dl>';
@@ -196,4 +197,51 @@ else {
     'heading' => 'Amazon EC2 Instance(s):',
     'body' => $info,
   ));
+ */ 
+  /*     ------------------------------------- */
+  echo '<div class="row-fluid">';
+  echo   '<div class="span1"></div>';
+  echo   '<div class="span10">';
+  echo      '<h3>Amazon EC2 Instances</h3>';
+  echo   '</div>';
+  echo   '<div class="span2"></div>';
+  echo '</div>';
+
+  echo '<div class="row-fluid">';
+  echo   '<div class="span2"></div>';
+  echo   '<div class="span8">';
+  echo      '<table class="table table-bordered table-hover responsive-utilities">';
+  echo          '<thead>';
+  echo            '<tr>';
+  echo               '<th>No.</th><th>Name</th><th>Type</th><th>State</th><th>DNS</th>';  
+  echo            '</tr>';
+  echo          '</thead>';
+  echo          '<tbody>';
+	
+  $count=1;			
+  foreach ($ec2_describe_response->body->reservationSet->item as $item) {
+	  if ($item->instancesSet->item->instanceState->nam == "Running") {
+	     echo '<tr class="success">';
+	  } else {
+	  	 echo '<tr class="info">';
+	  }
+      echo    '<td>$count</td>';
+      echo    '<td><strong>'.$item->instancesSet->item->tagSet->item->value.'</strong></td>';  //instance name
+      echo    '<td>'.$item->instancesSet->item->instanceType.'</td>';			//instance type
+	  if ($item->instancesSet->item->instanceState->nam == "Running") {			//instance state
+         echo    '<td><img align="left" src="../img/status_green.gif" alt="stopped icon">'.$item->instancesSet->item->instanceState->name.'</td>';
+	  } else {   //state is "Stopped"
+		 echo    '<td><img align="left" src="../img/status_red.gif" alt="stopped icon">'.$item->instancesSet->item->instanceState->name.'</td>';
+	  }
+      echo    '<td>'.$item->instancesSet->item->dnsName.'</td>';				//instance DNS
+	  echo   '</tr>';
+	  $count++;                
+  }
+  
+  echo          '</tbody>';
+  echo       '</table>';
+  echo    '</div>';
+  echo   '<div class="span1">';
+  echo  '</div>';
+  echo '</div>';
 }
