@@ -18,7 +18,7 @@ $show_form = TRUE;
 // If a file has been uploaded...
 if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name']) {
 	
-	var_dump($_FILES);
+	//var_dump($_FILES);
 	
   // Try to read file as an image.
   try {
@@ -190,6 +190,8 @@ if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name']) {
   }
 
   // Uploaded file count metric.
+  $cw->set_region(AmazonCloudWatch::REGION_OREGON);
+  
   $cw_put_metric_response = $cw->put_metric_data('Watermark', array(
     array(
       'MetricName' => 'UploadedFiles',
