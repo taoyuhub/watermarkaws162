@@ -230,7 +230,7 @@ else {
 	  if ($item->instancesSet->item->instanceState->name == "running") {
 	     echo '<tr class="success">';
 	  } else {
-	  	 echo '<tr class="info">';
+	  	 echo '<tr class="warning">';
 	  }
       echo    '<td>'.$count.'</td>';
       echo    '<td><strong>'.$item->instancesSet->item->tagSet->item->value.'</strong></td>';  //instance name
