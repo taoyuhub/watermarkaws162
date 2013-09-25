@@ -12,7 +12,7 @@ echo    '<table class="table table-bordered table-hover responsive-utilities">';
 echo        '<thead>';
 echo            '<tr>';
 echo                '<th>No.</th>';
-echo                '<th>Services & Tool</th>';
+echo                '<th>Services</th>';
 echo                '<th>Status / Configuration</th>';
 echo            '</tr>';
 echo        '</thead>';
