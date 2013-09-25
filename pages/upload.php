@@ -17,6 +17,9 @@ $show_form = TRUE;
 
 // If a file has been uploaded...
 if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name']) {
+	
+	var_dump($_FILES);
+	
   // Try to read file as an image.
   try {
     $imagick = new Imagick($_FILES['image']['tmp_name']);
