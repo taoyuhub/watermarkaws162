@@ -118,7 +118,8 @@ catch (Exception $e) {
 addWatermark($image_to_be_watermarked);
 $image_to_be_watermarked->writeImages($temporary_file_name, TRUE);
 
-// Upload watermarked image to S3.
+// Upload watermarked image to S3.   
+      //create_object will overwite the existing object.
 $s3_create_response = $s3->create_object(AWS_S3_BUCKET, $image_filename, array(
   'fileUpload' => $temporary_file_name,
   'contentType' => $content_type,
