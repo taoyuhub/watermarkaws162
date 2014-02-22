@@ -134,7 +134,7 @@ else {
   echo '</tr>';
 }
 
-// Check if ImageMagick is installed.
+// Check if ImageMagick is installed.  Find out whether extension "imagick" is loaded or not
 if (!extension_loaded('imagick')) {
 /*	
   echo renderMsg('error', array(
@@ -178,6 +178,8 @@ catch (Exception $e) {
 }
 
 // Get a list of all instances from EC2.
+
+//specify the service endpoint you wish to use
 $ec2->set_region(AmazonEC2::REGION_OREGON);
 
 $ec2_describe_response = $ec2->describe_instances();
